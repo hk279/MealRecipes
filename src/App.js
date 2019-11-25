@@ -18,7 +18,8 @@ function App() {
           <Route path="/browse">
             <Browse />
           </Route>
-          <Route path="/news">
+          <Route path="/about">
+
           </Route>
         </Switch>
       </div>

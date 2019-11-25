@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Container, ListGroup, Dropdown, DropdownButton, Jumbotron } from 'react-bootstrap'
+import { Container, Accordion, Card, Button, Dropdown, DropdownButton, Jumbotron } from 'react-bootstrap'
 
 class CategoriesDropdown extends React.Component {
   constructor(props) {
@@ -85,7 +85,6 @@ class List extends React.Component {
                   that.setState({
                     filteredMeals: data.meals
                   });
-                  console.log(data)
                 });
               }
             )
@@ -113,7 +112,6 @@ class List extends React.Component {
                   that.setState({
                     filteredMeals: data.meals
                   });
-                  console.log(data)
                 });
               }
             )
@@ -127,11 +125,21 @@ class List extends React.Component {
       return(
           <Container>
             <h2>{this.props.filter}</h2>
-            <ListGroup id="meals-list" variant="flush">
-              {this.state.filteredMeals.map(item => (
-                <ListGroup.Item action key={item.strMeal}>{item.strMeal}</ListGroup.Item>
-              ))}
-            </ListGroup>
+            <Accordion>
+              {this.state.filteredMeals.map((item, i) => 
+                <Card key={item.strMeal}>
+                  <Card.Header>
+                    <Accordion.Toggle as={Button} variant="link" eventKey={i}>
+                      {item.strMeal}
+                    </Accordion.Toggle>
+                  </Card.Header>
+                  <Accordion.Collapse eventKey={i}>
+                    <Card.Img src={item.strMealThumb}>
+                    </Card.Img>
+                  </Accordion.Collapse>                        
+                </Card>
+              )}
+            </Accordion>
           </Container>
           )
     }

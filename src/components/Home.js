@@ -50,7 +50,7 @@ class Home extends React.Component {
                     <Card.Img variant="top" src={this.state.randomMeal.strMealThumb} />
                     <Card.Body>
                         <Card.Title>{this.state.randomMeal.strMeal}</Card.Title>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="primary">See Recipe</Button>
                     </Card.Body>
                 </Card>
             </Container>
