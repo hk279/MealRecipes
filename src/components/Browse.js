@@ -2,6 +2,7 @@ import React from 'react'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Accordion, Card, Button, Dropdown, DropdownButton, Jumbotron } from 'react-bootstrap'
+import Recipe from './Recipe'
 
 class CategoriesDropdown extends React.Component {
   constructor(props) {
@@ -63,7 +64,8 @@ class List extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            filteredMeals: []
+            filteredMeals: [],
+            showRecipe: ""
         };
     }
 
@@ -122,26 +124,32 @@ class List extends React.Component {
     }
 
     render() {
-      return(
+      if(this.state.showRecipe !== "") {
+          return(
+            <Recipe id={this.state.showRecipe} />
+          )
+      } else {
+        return(
+
           <Container>
             <h2>{this.props.filter}</h2>
             <Accordion>
               {this.state.filteredMeals.map((item, i) => 
                 <Card key={item.strMeal}>
                   <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey={i}>
+                    <Accordion.Toggle as={Button} onClick={() => this.setState({showRecipe: item.idMeal})} variant="link" eventKey={item.idMeal}>
                       {item.strMeal}
                     </Accordion.Toggle>
                   </Card.Header>
-                  <Accordion.Collapse eventKey={i}>
-                    <Card.Img src={item.strMealThumb}>
-                    </Card.Img>
+                  <Accordion.Collapse eventKey={item.idMeal}>
+                    <Card.Body></Card.Body>
                   </Accordion.Collapse>                        
                 </Card>
               )}
             </Accordion>
           </Container>
           )
+      }
     }
 }
 
@@ -149,7 +157,7 @@ class Browse extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-          selectedCategory: "",
+          selectedCategory: ""
       };
   }
 
