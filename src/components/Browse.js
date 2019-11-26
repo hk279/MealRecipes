@@ -124,25 +124,21 @@ class List extends React.Component {
     }
 
     render() {
-      if(this.state.showRecipe !== "") {
-          return(
-            <Recipe id={this.state.showRecipe} />
-          )
-      } else {
         return(
-
           <Container>
             <h2>{this.props.filter}</h2>
             <Accordion>
               {this.state.filteredMeals.map((item, i) => 
-                <Card key={item.strMeal}>
+                <Card key={item.strMeal} onClick={() => this.setState({showRecipe: item.idMeal})}>
                   <Card.Header>
-                    <Accordion.Toggle as={Button} onClick={() => this.setState({showRecipe: item.idMeal})} variant="link" eventKey={item.idMeal}>
+                    <Accordion.Toggle as={Button} variant="link" eventKey={item.idMeal}>
                       {item.strMeal}
                     </Accordion.Toggle>
                   </Card.Header>
                   <Accordion.Collapse eventKey={item.idMeal}>
-                    <Card.Body></Card.Body>
+                    <Card.Body>
+                      {this.state.showRecipe !== "" ? <Recipe id={this.state.showRecipe} /> : null}
+                    </Card.Body>
                   </Accordion.Collapse>                        
                 </Card>
               )}
@@ -151,7 +147,6 @@ class List extends React.Component {
           )
       }
     }
-}
 
 class Browse extends React.Component {
   constructor(props) {
