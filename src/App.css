@@ -29,3 +29,11 @@
   margin: 1em;
   margin-bottom: 2em;
 }
+
+.meal {
+  max-width: 50%;
+}
+
+#instructions{
+  margin-top: 1em;
+}
