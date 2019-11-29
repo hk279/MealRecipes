@@ -47,4 +47,7 @@
   .img-wrap {
     display: block;
   }
+  .random-meal-name {
+    font-size: 0.8em;
+  }
 }

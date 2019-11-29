@@ -134,7 +134,7 @@ class Recipe extends React.Component {
             <Container>
                 <div>
                     <div style={{display: "inline-block", width: "50%"}}>
-                        <h3>Ingredients</h3>
+                        <h4>Ingredients</h4>
                         <ul>
                             {this.state.mealIngredients.map((item, i) => 
                                 {if(item[0] !== "") {
@@ -149,7 +149,7 @@ class Recipe extends React.Component {
                     {img}
                 </div>
                 <div id="instructions">
-                    <h3>Instructions</h3>
+                    <h4>Instructions</h4>
                     <p>{this.state.mealInstructions}</p>
                 </div>
             </Container>
