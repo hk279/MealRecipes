@@ -125,7 +125,7 @@ class Recipe extends React.Component {
     render() {
         var img
         if (this.props.showImg) {
-            img = <div className="img-wrap" style={{ width: "50%"}}><img className="mealImg" src={this.state.mealPictureThumb} alt="Meal"></img></div>
+            img = <div className="img-wrap"><img className="mealImg" src={this.state.mealPictureThumb} alt="Meal"></img></div>
         } else {
             img = null
         }
@@ -133,7 +133,7 @@ class Recipe extends React.Component {
         return(
             <Container>
                 <div>
-                    <div style={{display: "inline-block", width: "50%"}}>
+                    <div className="ingredients">
                         <h4>Ingredients</h4>
                         <ul>
                             {this.state.mealIngredients.map((item, i) => 
