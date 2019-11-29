@@ -123,10 +123,18 @@ class Recipe extends React.Component {
         }
 
     render() {
+        var img
+        if (this.props.showImg) {
+            img = <Col><img className="meal" src={this.state.mealPictureThumb} alt="Meal"></img></Col>
+        } else {
+            img = null
+        }
+
         return(
             <Container>
                 <Row>
                     <Col>
+                        <h3>Ingredients</h3>
                         <ul>
                             {this.state.mealIngredients.map((item, i) => 
                                 {if(item[0] !== "") {
@@ -138,12 +146,13 @@ class Recipe extends React.Component {
                             )}
                         </ul>
                     </Col>
-                    <Col>
-                        <img className="meal" src={this.state.mealPictureThumb} alt="Meal"></img>
-                    </Col>
+                    {img}
                 </Row>
                 <Row id="instructions">
-                    <Col>{this.state.mealInstructions}</Col>
+                    <Col>
+                        <h3>Instructions</h3>
+                        <p>{this.state.mealInstructions}</p>
+                    </Col>
                 </Row>
             </Container>
         )

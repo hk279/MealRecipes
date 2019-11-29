@@ -1,7 +1,8 @@
 import React from 'react'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Container, Card, Button, Row, Col } from 'react-bootstrap'
+import { Container, Card, Button, Row, Col, Accordion, AccordionToggle } from 'react-bootstrap'
+import Recipe from './Recipe'
 
 class RandomMeal extends React.Component {
     constructor(props) {
@@ -37,20 +38,25 @@ class RandomMeal extends React.Component {
     render() {
         return(
             <Container id="random-recipe">
-                <Card style={{ width: '40rem' }}>
-                    <Card.Header><h3>Random Meal</h3></Card.Header>
-                    <Row>
-                        <Col>
-                            <Card.Img variant="top" src={this.state.randomMeal.strMealThumb} />
-                        </Col>
-                        <Col>
-                            <Card.Body className="vertical-center">
-                                <Card.Title>{this.state.randomMeal.strMeal}</Card.Title>
-                                <Button variant="primary">See Recipe</Button>
-                            </Card.Body>
-                        </Col>
-                    </Row>
-                </Card>
+                <Accordion>
+                    <Card style={{ width: '40rem' }}>
+                        <Card.Header><h3>Random Meal</h3></Card.Header>
+                        <Row>
+                            <Col>
+                                <Card.Img variant="top" src={this.state.randomMeal.strMealThumb} />
+                            </Col>
+                            <Col>
+                                <div className="vertical-center">
+                                    <Card.Title><h2>{this.state.randomMeal.strMeal}</h2></Card.Title>
+                                    <AccordionToggle as={Button} variant="primary" eventKey="1">See Recipe</AccordionToggle>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Accordion.Collapse eventKey="1">
+                            <Card.Body><Recipe id = {this.state.randomMeal.idMeal} showImg = {false}/></Card.Body>
+                        </Accordion.Collapse>
+                    </Card>
+                </Accordion>
             </Container>
         )
     }

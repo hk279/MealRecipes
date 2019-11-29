@@ -81,7 +81,7 @@ class List extends React.Component {
                   </Card.Header>
                   <Accordion.Collapse eventKey={item.idMeal}>
                     <Card.Body>
-                      {this.state.showRecipe !== "" ? <Recipe id={this.state.showRecipe} /> : null}
+                      {this.state.showRecipe !== "" ? <Recipe id={this.state.showRecipe} showImg = {true} /> : null}
                     </Card.Body>
                   </Accordion.Collapse>                        
                 </Card>
