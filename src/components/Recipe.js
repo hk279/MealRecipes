@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 class Recipe extends React.Component {
     constructor(props) {
@@ -125,7 +125,7 @@ class Recipe extends React.Component {
     render() {
         var img
         if (this.props.showImg) {
-            img = <div style={{display: "inline-block", textAlign: "right"}}><img className="meal" src={this.state.mealPictureThumb} alt="Meal"></img></div>
+            img = <div className="img-wrap" style={{ width: "50%"}}><img className="mealImg" src={this.state.mealPictureThumb} alt="Meal"></img></div>
         } else {
             img = null
         }
@@ -133,7 +133,7 @@ class Recipe extends React.Component {
         return(
             <Container>
                 <div>
-                    <div style={{display: "inline-block"}}>
+                    <div style={{display: "inline-block", width: "50%"}}>
                         <h3>Ingredients</h3>
                         <ul>
                             {this.state.mealIngredients.map((item, i) => 
@@ -148,12 +148,10 @@ class Recipe extends React.Component {
                     </div>
                     {img}
                 </div>
-                <Row id="instructions">
-                    <Col>
-                        <h3>Instructions</h3>
-                        <p>{this.state.mealInstructions}</p>
-                    </Col>
-                </Row>
+                <div id="instructions">
+                    <h3>Instructions</h3>
+                    <p>{this.state.mealInstructions}</p>
+                </div>
             </Container>
         )
     }
