@@ -125,15 +125,15 @@ class Recipe extends React.Component {
     render() {
         var img
         if (this.props.showImg) {
-            img = <Col><img className="meal" src={this.state.mealPictureThumb} alt="Meal"></img></Col>
+            img = <div style={{display: "inline-block", textAlign: "right"}}><img className="meal" src={this.state.mealPictureThumb} alt="Meal"></img></div>
         } else {
             img = null
         }
 
         return(
             <Container>
-                <Row>
-                    <Col>
+                <div>
+                    <div style={{display: "inline-block"}}>
                         <h3>Ingredients</h3>
                         <ul>
                             {this.state.mealIngredients.map((item, i) => 
@@ -145,9 +145,9 @@ class Recipe extends React.Component {
                                 }}
                             )}
                         </ul>
-                    </Col>
+                    </div>
                     {img}
-                </Row>
+                </div>
                 <Row id="instructions">
                     <Col>
                         <h3>Instructions</h3>
