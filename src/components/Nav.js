@@ -8,7 +8,6 @@ class Navigation extends React.Component {
         super(props);
         this.state = {
           items: ["Home", "Browse", "About"],
-          mainIngredients: ["Beef", "Pork", "Chicken"]
         };
       }
 
@@ -19,11 +18,6 @@ class Navigation extends React.Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link href="/">{this.state.items[0]}</Nav.Link>
-                <NavDropdown title="Main Ingredients" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="">{this.state.mainIngredients[0]}</NavDropdown.Item>
-                    <NavDropdown.Item href="">{this.state.mainIngredients[1]}</NavDropdown.Item>
-                    <NavDropdown.Item href="">{this.state.mainIngredients[2]}</NavDropdown.Item>
-                </NavDropdown>
                 <Nav.Link href="/browse">{this.state.items[1]}</Nav.Link>
                 <Nav.Link href="/about">{this.state.items[2]}</Nav.Link>
               </Nav>
