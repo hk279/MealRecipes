@@ -15,12 +15,17 @@ class Recipe extends React.Component {
     }
 
     componentDidMount() {
-            //A necessary workaround to make setState work later.
-            const that = this
-            var url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + this.props.id
-            console.log(url)
-            fetch(url)
-                .then(
+        //A workaround to prevent undefined id when loading home page
+        if(!this.props.id) {
+            return;
+        }
+        //A necessary workaround to make setState work later.
+        const that = this
+        
+        var url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + this.props.id
+        console.log(url)
+        fetch(url)
+            .then(
                 function(response) {
                     if (response.status !== 200) {
                         return;
@@ -60,11 +65,11 @@ class Recipe extends React.Component {
                                 mealPictureThumb: meal.strMealThumb
                             })
                     });
-                    }
-                )
-                .catch(function(err) {
-                    console.log('Fetch Error :-S', err);
-                });
+                }
+            )
+            .catch(function(err) {
+                console.log('Fetch Error :-S', err);
+            });
         }
 
     componentDidUpdate(prevProps) {

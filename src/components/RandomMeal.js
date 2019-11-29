@@ -24,9 +24,11 @@ class RandomMeal extends React.Component {
                     return;
                     }
                     response.json().then(function(data) {
+                        var rand = data.meals[0]
                         that.setState({
-                            randomMeal: data.meals[0]
+                            randomMeal: rand
                         });
+                        console.log(rand)
                     });
                 }
             )
