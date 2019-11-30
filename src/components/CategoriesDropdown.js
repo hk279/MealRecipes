@@ -44,7 +44,7 @@ class CategoriesDropdown extends React.Component {
         <Container>
           <Jumbotron>
             <h2>Select a category</h2>
-            <DropdownButton id="categories-dropdown" title="Categories">
+            <DropdownButton id="categories-dropdown" variant="info" title="Categories">
               {this.state.categories.map(item => (
                 <Dropdown.Item 
                 key={item.strCategory} 

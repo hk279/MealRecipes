@@ -14,6 +14,9 @@ class List extends React.Component {
     }
 
     componentDidMount() {
+        if(!this.props.filter) {
+          return
+        }
         var url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + this.props.filter
         console.log(url)
   
@@ -68,27 +71,50 @@ class List extends React.Component {
     }
 
     render() {
-        return(
-          <Container>
-            <h2>{this.props.filter}</h2>
-            <Accordion>
-              {this.state.filteredMeals.map((item, i) => 
-                <Card key={item.strMeal} onClick={() => this.setState({showRecipe: item.idMeal})}>
-                  <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey={item.idMeal}>
-                      {item.strMeal}
-                    </Accordion.Toggle>
-                  </Card.Header>
-                  <Accordion.Collapse eventKey={item.idMeal}>
-                    <Card.Body>
-                      {this.state.showRecipe !== "" ? <Recipe id={this.state.showRecipe} showImg = {true} /> : null}
-                    </Card.Body>
-                  </Accordion.Collapse>                        
-                </Card>
-              )}
-            </Accordion>
-          </Container>
+        if(this.props.searchResults) {
+          return(
+            <Container>
+              <Accordion>
+                {this.props.searchResults.map((item) => 
+                  <Card key={item.strMeal} onClick={() => this.setState({showRecipe: item.idMeal})}>
+                    <Card.Header>
+                      <Accordion.Toggle as={Button} variant="link" eventKey={item.idMeal}>
+                        {item.strMeal}
+                      </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey={item.idMeal}>
+                      <Card.Body>
+                        {this.state.showRecipe !== "" ? <Recipe id={this.state.showRecipe} showImg = {true} /> : null}
+                      </Card.Body>
+                    </Accordion.Collapse>                        
+                  </Card>
+                )}
+              </Accordion>
+            </Container>
           )
+        } else {
+          return(
+            <Container>
+              <h2>{this.props.filter}</h2>
+              <Accordion>
+                {this.state.filteredMeals.map((item, i) => 
+                  <Card key={item.strMeal} onClick={() => this.setState({showRecipe: item.idMeal})}>
+                    <Card.Header>
+                      <Accordion.Toggle as={Button} variant="link" eventKey={item.idMeal}>
+                        {item.strMeal}
+                      </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey={item.idMeal}>
+                      <Card.Body>
+                        {this.state.showRecipe !== "" ? <Recipe id={this.state.showRecipe} showImg = {true} /> : null}
+                      </Card.Body>
+                    </Accordion.Collapse>                        
+                  </Card>
+                )}
+              </Accordion>
+            </Container>
+          )    
+        }
       }
     }
 

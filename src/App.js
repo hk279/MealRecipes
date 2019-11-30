@@ -7,25 +7,39 @@ import Home from "./components/Home"
 import Browse from "./components/Browse"
 import About from "./components/About"
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Navigation />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/browse">
-            <Browse />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        searchWord: ""
+    };
+  }
+
+  callbackFunction = (childData) => {
+    this.setState({searchWord: childData})
+    console.log(this.state.searchWord)
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navigation parentCallback = {this.callbackFunction} />
+          <Switch>
+            <Route path="/" exact>
+              <Home search = {this.state.searchWord} />
+            </Route>
+            <Route path="/browse">
+              <Browse />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    )
+  }
 }
 
 export default App;

@@ -50,7 +50,7 @@ class RandomMeal extends React.Component {
                             <Col>
                                 <div className="vertical-center">
                                     <Card.Title><h2 className="random-meal-name" style={{paddingRight: "1em"}}>{this.state.randomMeal.strMeal}</h2></Card.Title>
-                                    <AccordionToggle as={Button} variant="primary" eventKey="1">See Recipe</AccordionToggle>
+                                    <AccordionToggle as={Button} variant="info" eventKey="1">See Recipe</AccordionToggle>
                                 </div>
                             </Col>
                         </Row>
