@@ -15,11 +15,6 @@ class App extends React.Component {
     };
   }
 
-  callbackFunction = (childData) => {
-    this.setState({searchWord: childData})
-    console.log(this.state.searchWord)
-  }
-
   render() {
     return (
       <Router>
