@@ -22,7 +22,9 @@ class Home extends React.Component {
 
     handleClick = () => {
         if(this.state.searchWord !== "") {
-            this.setState({showList: true})
+            this.setState({
+                showList: true
+            })
         }
     }
 
@@ -53,7 +55,13 @@ class Home extends React.Component {
                             <p>Start exploring to find inspiration for your next meal!</p>
                             <Button variant="info" href="/browse" style={{marginBottom: "1em"}}>Browse Recipes</Button>
                             <Form inline>
-                                <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.handleChange} value={this.state.searchWord}/>
+                                <FormControl 
+                                type="text" 
+                                placeholder="Search" 
+                                className="mr-sm-2" 
+                                onChange={this.handleChange} 
+                                value={this.state.searchWord}
+                                />
                                 <Button variant="success" onClick={this.handleClick}>Search</Button>
                             </Form>
                         </Container>

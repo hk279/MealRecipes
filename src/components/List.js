@@ -71,6 +71,11 @@ class List extends React.Component {
     }
 
     render() {
+        if(this.props.searchResults === null) {
+          return(
+            <Container><h3>No results found</h3></Container>
+          )
+        }
         if(this.props.searchResults) {
           return(
             <Container>
