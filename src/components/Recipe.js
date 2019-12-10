@@ -33,7 +33,7 @@ class Recipe extends React.Component {
                     response.json().then(function(data) {
                         var ingredientsNameAndMeasure = []
                         var meal = data.meals[0]
-
+                        //Necessary due to the meal ingredients not being presented as an array in the API.
                         ingredientsNameAndMeasure.push(
                             [meal.strIngredient1, meal.strMeasure1],
                             [meal.strIngredient2, meal.strMeasure2],
@@ -142,7 +142,7 @@ class Recipe extends React.Component {
                         <h4>Ingredients</h4>
                         <ul>
                             {this.state.mealIngredients.map((item, i) => 
-                                {if(item[0] !== "") {
+                                {if(item[0] !== "" && item[0] !== null) {
                                     return(<li key={i}>{item[1] + " " + item[0]}</li>)
                                 }
                                 else {

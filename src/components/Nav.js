@@ -9,6 +9,7 @@ class Navigation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+          //Navigation items are declared in the state.
           navItems: [
             {
               name: "Home",

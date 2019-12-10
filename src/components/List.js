@@ -13,6 +13,7 @@ class List extends React.Component {
         };
     }
 
+    //Gets the meals matching the chosen category.
     componentDidMount() {
         if(!this.props.filter) {
           return

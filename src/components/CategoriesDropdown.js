@@ -11,6 +11,7 @@ class CategoriesDropdown extends React.Component {
       };
     }
   
+    //Gets all of the available meal categories from the API.
     componentDidMount() {
       //A necessary workaround to make setState work later.
       const that = this

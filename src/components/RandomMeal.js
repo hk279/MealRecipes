@@ -12,6 +12,7 @@ class RandomMeal extends React.Component {
         };
     }
 
+    //Gets a random meal from the API.
     componentDidMount() {
         //A necessary workaround to make setState work later.
         const that = this
@@ -28,7 +29,6 @@ class RandomMeal extends React.Component {
                         that.setState({
                             randomMeal: rand
                         });
-                        console.log(rand)
                     });
                 }
             )

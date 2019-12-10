@@ -10,7 +10,7 @@ class SearchResults extends React.Component {
             searchResults: []
         };
     }
-
+    //Gets a recipe matching the given search word from the API.
     componentDidMount() {
         //A necessary workaround to make setState work later.
         const that = this
